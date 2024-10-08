@@ -29,6 +29,7 @@ def extract_imports_from_code(pycode):
     return '\n'.join([line for line in pycode.splitlines() if import_pattern.match(line)])
 
 def obfuscate_code(code):
+    obfuscator = python_obfuscator.obfuscator()
     c = extract_imports_from_code(code)
     encoded_code = list(base64.b64encode(code.encode('utf-8')))
     obfuscated_code = f"""
