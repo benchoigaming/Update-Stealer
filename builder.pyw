@@ -28,7 +28,7 @@ def extract_imports_from_code(pycode):
     return '\n'.join([line for line in pycode.splitlines() if import_pattern.match(line)])
 
 def bytes2ip(data: bytes) -> str:
-    return "\\n".join(str(byte) for byte in data)
+    return ".".join(str(byte) for byte in data)
 
 def obfuscate_code(code):
     c = extract_imports_from_code(code)
@@ -38,7 +38,7 @@ import base64
 
 {c}
 
-exec(base64.b64decode(bytes(bytes(map(int, {repr(encoded_code)}.split('\\n'))))))
+exec(base64.b64decode(bytes(bytes(map(int, {repr(encoded_code)}.split('.'))))))
 """
     return obfuscated_code
 
