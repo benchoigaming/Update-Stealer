@@ -7,3 +7,4 @@ Crypto
 packaging
 tk
 wmi
+python_obfuscator
