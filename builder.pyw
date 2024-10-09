@@ -4,7 +4,7 @@ import customtkinter as ctk
 from tkinter import messagebox, filedialog
 import base64
 import re
-from BlankOBFv2 import *
+from assets.BlankOBFv2 import *
 
 ctk.set_appearance_mode("dark")
 app = ctk.CTk()
