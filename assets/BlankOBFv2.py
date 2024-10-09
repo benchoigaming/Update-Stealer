@@ -30,8 +30,8 @@ class BlankOBFv2:
 
         # Put layers here
         layers = [
-            self._layer_1,
-            self._layer_2
+            self._layer_3,
+            self._layer_3
         ] * self.__recursion
         random.shuffle(layers)
 
@@ -40,7 +40,7 @@ class BlankOBFv2:
 
         for layer in layers:
             layer()
-
+        self._obfuscate_vars()
         if self.__include_imports:
             self._prepend_imports()
         return self._code
