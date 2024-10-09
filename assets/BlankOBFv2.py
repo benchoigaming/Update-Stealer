@@ -31,18 +31,11 @@ class BlankOBFv2:
         # Put layers here
         layers = [
             self._layer_1,
-            self._layer_2,
-            self._layer_3
+            self._layer_2
         ] * self.__recursion
         random.shuffle(layers)
 
-        # Optimization: The _layer_3 is a bit laggy if it is outermost
-        if layers[-1] == self._layer_3:
-            for index, layer in enumerate(layers):
-                if layer != self._layer_3:
-                    layers[index] = self._layer_3
-                    layers[-1] = layer
-                    break
+
         # End of optimization
 
         for layer in layers:
@@ -301,7 +294,7 @@ exec(__import__("zlib").decompress(__import__("base64").b64decode(fire + water +
                     ctx=ast.Store()
                 )
         self._code = ast.unparse(tree)
-        self._obfuscate_vars()
+        # self._obfuscate_vars()
         self._insert_dummy_comments()
     
     def _layer_2(self) -> None:
@@ -332,7 +325,7 @@ for i in range(1, 100):
                 node.elts = [ast.Constant(value=x) for x in encrypted]
         
         self._code = ast.unparse(tree)
-        self._obfuscate_vars()
+        # self._obfuscate_vars()
         self._insert_dummy_comments()
 
     def _layer_3(self) -> None:
@@ -352,7 +345,7 @@ exec(compile(__import__("zlib").decompress(__import__("base64").b64decode(bytes(
         ip_addresses = bytes2ip(encrypted)
 
         self._code = layer
-        self._obfuscate_vars()
+        # self._obfuscate_vars()
         tree = ast.parse(self._code)
         for node in ast.walk(tree):
             if isinstance(node, ast.Assign) and isinstance(node.value, ast.List):
