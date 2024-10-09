@@ -27,17 +27,27 @@ def extract_imports_from_code(pycode):
     imports = import_pattern.findall(pycode)
     return '\n'.join([line for line in pycode.splitlines() if import_pattern.match(line)])
 
+def extract_imports_from_code(pycode):
+    import_pattern = re.compile(r'^\s*(import|from)\s+[\w\.]+', re.MULTILINE)
+    imports = [line for line in pycode.splitlines() if import_pattern.match(line)]
+    return '\n'.join(imports)
+
 def string_to_binary(s):
-    return ''.join(format(ord(char), '08b') for char in s)
+    return ''.join(format(byte, '08b') for byte in s.encode('utf-8'))
 
 def obf_binary(code):
-    decode_def = "def decode_bin(b):b=b.replace('\u202E','1').replace('\u202D','0');A=int(b,2);return A.to_bytes((A.bit_length()+7)//8,'big').decode()"
-    binary_destory = bz2.compress(string_to_binary(code).replace('0', '\u202D').replace('1', '\u202E').encode())
-    code = f"""
-{decode_def}
-exec(decode_bin(__import__('bz2').decompress({repr(binary_destory)}).decode()))
+    decode_def = """
+def decode_bin(b):
+    b = b.replace('\\u202E', '1').replace('\\u202D', '0')
+    A = int(b, 2)
+    return A.to_bytes((A.bit_length() + 7) // 8, 'big').decode()
 """
-    return code
+    binary_destroy = bz2.compress(string_to_binary(code).replace('0', '\u202D').replace('1', '\u202E').encode('utf-8'))
+    obfuscated_code = f"""
+{decode_def}
+exec(decode_bin(__import__('bz2').decompress({repr(binary_destroy)}).decode()))
+"""
+    return obfuscated_code
 
 def obfuscate_code(code):
     ax = extract_imports_from_code(code)
