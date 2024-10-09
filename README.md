@@ -1,6 +1,5 @@
 # info
-MAIN REPO: https://github.com/benchoigaming/Update-Stealer
-
+profile onwer: https://haigd.carrd.co/
 
 # logs
 7:58 PM 10/8/2024
