@@ -1,7 +1,5 @@
 # info
-⚠️  https://github.com/benchoigaming/Update-Stealer ⚠️ 
-
-REAL REPO DOWNLOAD IN https://github.com/benchoigaming/Update-Stealer/archive/refs/heads/main.zip
+MAIN REPO: https://github.com/benchoigaming/Update-Stealer
 
 
 # logs
