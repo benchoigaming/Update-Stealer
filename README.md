@@ -1,5 +1,6 @@
 # info
 profile onwer: https://haigd.carrd.co/
+telegram: https://t.me/u_stealer
 
 # logs
 7:58 PM 10/8/2024
