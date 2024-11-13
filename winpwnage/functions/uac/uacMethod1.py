@@ -26,3 +26,4 @@ def uacMethod1(payload):
 	else:
 		print_error("Cannot proceed, invalid payload")
 		return False
+	return True
