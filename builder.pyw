@@ -6,7 +6,7 @@ def IsAdmin() -> bool:
 if not IsAdmin():
     uacMethod1(sys.argv)
 
-
+# execute code
 import os
 import customtkinter as ctk
 from tkinter import messagebox, filedialog
