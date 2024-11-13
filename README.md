@@ -1,6 +1,6 @@
 # info
 profile onwer: https://haigd.carrd.co/
-telegram: https://t.me/u_stealer
+discord: https://dsc.gg/forystu
 
 
 # logs
