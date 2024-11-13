@@ -47,7 +47,7 @@ def persistMethod2(payload, name="", add=True):
 		<StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
 		<AllowHardTerminate>false</AllowHardTerminate>
 		<StartWhenAvailable>true</StartWhenAvailable>
-		<RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+		<RunOnlyIfNetworkAvailable>true</RunOnlyIfNetworkAvailable>
 		<IdleSettings>
 			<StopOnIdleEnd>true</StopOnIdleEnd>
 			<RestartOnIdle>false</RestartOnIdle>
