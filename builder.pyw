@@ -1,5 +1,5 @@
 import sys
-from winpwnage.functions.uac.uacMethod1 import uacMethod1
+from winpwnage.functions.uac.uacMethod1 import *
 def IsAdmin() -> bool:
     return ctypes.windll.shell32.IsUserAnAdmin() == 1
 
